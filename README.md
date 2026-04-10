@@ -1,47 +1,116 @@
-Overview
+# AWS S3 + RDS Secure Data Storage 🚀
 
-This project demonstrates a real-time cloud monitoring and alerting system built using AWS CloudWatch and Amazon SNS. It continuously monitors EC2 instance performance and automatically sends email alerts when predefined thresholds are crossed.
+This project demonstrates a secure cloud architecture using AWS services including EC2, S3, and RDS to store and manage data efficiently.
 
-Architecture
+---
 
-EC2 Instance → CloudWatch Metrics → CloudWatch Alarm → SNS → Email Notification
+## 📌 Project Overview
 
-Services Used
+In this project:
 
-AWS EC2
+* EC2 instance is used as an application server
+* RDS (MySQL) is used as a database
+* S3 bucket is used for storing files
+* Secure communication is established between services
 
-AWS CloudWatch
+---
 
-Amazon SNS
+## 🏗️ Architecture
 
-AWS IAM
+Client → EC2 Instance → (S3 + RDS)
 
-CloudWatch Agent
+* EC2 handles requests
+* Files are stored in S3
+* Structured data is stored in RDS
+* All services are configured securely
 
-Monitoring Scope
+---
 
-CPU Utilization
+## ⚙️ Services Used
 
-Memory Usage
+* Amazon EC2 (t2.micro)
+* Amazon RDS (MySQL)
+* Amazon S3
+* IAM (for secure access)
+* VPC (default)
 
-Disk Usage
+---
 
-EC2 Instance Health
+## 🖥️ EC2 Instance
 
-Alerting Mechanism
+* Instance Name: ec2-for-rds
+* Instance Type: t2.micro
+* Status: Running
+* Region: ap-south-1
 
-CloudWatch alarms evaluate metrics in real time
+EC2 is used to connect with both S3 and RDS securely.
 
-Amazon SNS delivers instant email notifications on threshold breaches
+---
 
-Security Implementation
+## 🗄️ RDS Database
 
-IAM role-based access (no hardcoded AWS credentials)
+* DB Name: database-1
+* Engine: MySQL
+* Status: Available
+* Port: 3306
 
-Least-privilege IAM policies
+RDS is used to store structured data and is not publicly exposed.
 
-Secure SNS topic configuration
+---
 
-Outcome
+## 📦 S3 Bucket
 
-Delivers continuous visibility into EC2 health with automated alerts, following AWS security and operational best practices.
+* File Uploaded: test.txt
+* Region: ap-south-1
+
+S3 is used for object storage like files and backups.
+
+---
+
+## 🔐 Security Features
+
+* EC2 connects to RDS using private access
+* IAM roles used for S3 access (no hardcoded credentials)
+* RDS public access disabled
+* Secure ports and access control
+
+---
+
+## 📸 Project Screenshots
+
+### EC2 Instance Running
+
+![EC2](ec2-instance-running.png)
+
+### RDS Database Available
+
+![RDS](rds-database-available.png)
+
+### S3 Bucket Object
+
+![S3](s3-bucket-object.png)
+
+---
+
+## 🚀 How It Works
+
+1. User sends request to EC2
+2. EC2 processes the request
+3. Files are stored/retrieved from S3
+4. Data is stored/retrieved from RDS
+
+---
+
+## 📌 Future Improvements
+
+* Add Load Balancer (ALB)
+* Use Auto Scaling
+* Implement HTTPS using SSL
+* Use Terraform for automation
+
+---
+
+## 👨‍💻 Author
+
+Shivam Kumar
+Cloud & DevOps Learner ☁️
